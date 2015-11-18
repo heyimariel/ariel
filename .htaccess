@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+# 关闭目录列表
+Options -Indexes
+RewriteEngine on
+# 预设页面
+DirectoryIndex default.html index.html default.html index.htm default.php index.php
+# 统一网址，去掉www。如果你想保留www，自己在第二行添加
+RewriteCond %{HTTP_HOST} ^0baidu.tk[NC]
+RewriteRule ^(.*)$ http://0baidu.tk/$1 [L,R=301]
+# 将域名绑定在特定的目录当中。0baiud.tk是我建立的文件目录
+RewriteCond %{HTTP_HOST} ^(www.)?0baidu.tk$ [NC]
+RewriteRule ^(.*)$ /0baidu.tk/$1 [L]
+</IfModule>
